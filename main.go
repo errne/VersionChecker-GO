@@ -8,6 +8,8 @@
  	"strings"
  )
 
+ var Version string = "dev"
+
  // Tool represents a command-line tool to check for
  type Tool struct {
  	Name       string
@@ -31,6 +33,14 @@
  }
 
  func main() {
+  for _, arg := range os.Args {
+        if arg == "--version" {
+            // Display version and exit cleanly if the flag is found
+            fmt.Printf("App Version: %s\n", Version)
+            os.Exit(0)
+        }
+    }
+  
  	fmt.Println("--- System Information ---")
 
  	// Get and display OS Info
